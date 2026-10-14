@@ -1,19 +1,19 @@
-cat << 'EOF' > CLAUDE.md
-# Project Instructions for Claude
+# 1974/75 English First Division Standings Generator
 
-## Project Overview
-Backend coding test for Span Digital: A Python CLI application that calculates English First Division league standings for week 10 of the 1974/75 season.
+## Overview
+A production-ready Python CLI application that processes match results from CSV input and outputs the 1974/75 English First Division league standings based on historical rules.
 
-## Tech Stack
-- Language: Python 3.10+
-- Testing: Pytest
+## Key Technical Rules (1974/75 Season)
+- **Points**: 2 points for a Win, 1 point for a Draw, 0 points for a Loss.
+- **Primary Tie-Breaker**: Goal Average ($\text{GA} = \frac{\text{Goals For}}{\text{Goals Conceded}}$). Higher goal average ranks higher.
+- **Secondary Tie-Breaker**: Total Goals For ($\text{GF}$).
+- **Fallback Tie-Breaker**: Alphabetical team name order.
+- **Clean Sheets**: Zero goals conceded ($\text{GA} = 0$) results in an infinite goal average (`inf`), properly sorted above finite averages.
 
-## Key Rules & Logic
-- Points: 2 for a win, 1 for a draw, 0 for a loss.
-- Tie-breaker: Goal Average (Goals For / Goals Conceded) followed by Goals For.
+## Developer Commands
 
-## Development Commands
-- Run tests: `pytest`
-- Run application: `python -m src.main input.csv`
-EOF
-
+### Environment Setup
+```bash
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
